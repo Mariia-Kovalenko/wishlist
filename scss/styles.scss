@@ -1,0 +1,340 @@
+@import "null.css";
+
+$contentFont: 'Montserrat', sans-serif;
+$headingFont: 'Risque', cursive;
+
+$pinky: #E75A70;
+$greeny: #5DD240;
+$fontColor: #31353E;
+
+body{
+    font-family: $contentFont;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;  
+    color: $fontColor;
+}
+
+.wrapper{
+    padding-top: 55px;
+}
+.container{
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+@media screen and (min-width: 860px) {
+    .top-section{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }   
+}
+
+.content{
+
+    &__inner{
+        position: relative;
+        margin: 0 -16px;
+    }
+    &__heading{
+        font-family: $headingFont;
+        font-size: 55px;
+        line-height: 64px;
+        text-align: center;
+        margin-bottom: 45px;
+    }
+}
+
+// .add-wish{
+//     position: absolute;
+//     // top: 41px;
+//     // left: 225px;
+// }
+
+.items__button{
+    position: absolute;
+    width: 100%;
+    margin: 41px auto;
+}
+
+.add-wish{
+    display: block;
+    margin: auto;
+}
+.items{
+    display: flex;
+    //margin: 0 -16px;
+    width: 100%;
+}
+.itemblock{
+    width: 300px;
+    height: 217px;
+    min-width: 160px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 9px 3px rgba(231, 90, 112, 0.2);
+    border-radius: 25px;
+    padding: 32px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    margin: 0 8px;
+
+    & p{
+        font-size: 25px;
+    }
+    & .count{
+        font-size: 30px;
+    }
+    &:nth-child(2) > *{
+        margin-left: auto;
+    }
+    img{
+        height: 50px;
+    }
+}
+
+
+.wishes{
+    margin-top: 50px;
+    &__heading{
+        font-family: $headingFont;
+        font-weight: normal;
+        font-size: 40px;
+        line-height: 46px;
+        text-align: center;
+        margin-bottom: 36px;
+    }
+}
+
+
+.wish{
+    min-height: 90px;
+    // width: 100%;
+    
+    background: #FFFFFF;
+    box-shadow: 0px 4px 9px 3px rgba(231, 90, 112, 0.2);
+    border-radius: 25px;
+    padding: 20px 30px;
+    margin-bottom: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+
+
+    &__image{
+        width: 56px;
+        height: 56px;
+        background-color: #FDD888;
+        border-radius: 50%;
+        padding: 10px;
+    }
+
+    &__name{
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 22px;
+        margin-bottom: 6px;
+    }
+    &__category{
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 17px;
+        
+        color: #888686;
+    }
+    &__inner{
+        display: flex;
+        & >:not(:last-child){
+            margin-right: 30px;
+        }
+    }
+
+    &__icons >:not(:last-child){
+        margin-right: 16px;
+    }
+}
+
+@media screen and (min-width: 768px){
+    .wishlist{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        margin: 0 -16px;
+    }
+    .wish{
+        margin: 10px 16px;
+        // min-height: 90px;
+        min-width: 370px;
+    }
+}
+
+
+@media screen and (max-width: 930px) {
+    .itemblock{
+        width: 270px;
+        height: 195px;
+
+        p{
+            font-size: 23px;
+        }
+
+        & .count{
+            font-size: 27px;
+        }
+    }
+    .add-wish{
+        height: 130px;
+        width: 130px;
+    }
+    .items__button{
+        margin-top: 38px;
+    }
+    .content__heading{
+        margin-bottom: 55px;
+    }
+}
+
+@media screen and (max-width: 820px) {
+    .wish{
+        padding: 15px 25px;
+        margin-left: 10px;
+        margin-right: 10px;
+        &__inner > :not(:last-child){
+            margin-right: 20px;
+        }
+        &__name{
+            font-size: 18px;
+        }
+        &__category{
+            font-size: 14px;
+        }
+        &__icons > :not(:last-child){
+            margin-right: 10px;
+        }
+    }
+}
+@media screen and (max-width: 859px) {
+    .top-section{
+        position: relative;
+    }
+    .content{
+        &__heading{
+            position: absolute;
+            top:20%;
+            right: 10%;
+        }
+        &__inner{
+            margin-top: 40px;
+        }
+    }
+    .itemblock{
+        width: 100%;
+    }   
+}
+
+@media screen and (max-width: 768px){
+    .wishlist{
+        width: 100%;
+        margin: 0;
+    }
+    .wish{
+        width: 100%;
+        margin: 0 0 16px 0;
+    }
+}
+@media screen and (max-width: 650px) {
+    .wrapper{
+        padding-top: 40px;
+    }
+    .top-section__image img{
+        height: 270px;
+    }
+    .content__heading{
+        font-size: 48px;
+        right: 7%;
+    }
+    .itemblock {
+        img{
+            height: 40px;
+        }
+        p{
+            font-size: 22px;
+        }
+        & .count{
+            font-size: 24px;
+        }
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .content__heading{
+        font-size: 42px;
+        right: 4%;
+    }
+    .top-section__image img{
+        height: 250px;
+    }
+    .itemblock{
+        width: 249px;
+        height: 180px;
+        img{
+            height: 35px;
+        }
+        p{
+            font-size: 20px;
+        }
+        & .count{
+            font-size: 25px;
+        }
+    }
+    .add-wish{
+        height: 120px;
+        width: 120px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .wrapper{
+        padding-top: 30px;
+    }
+    .top-section__image{
+        height: 230px;
+    }
+    .content{
+        &__heading{
+            font-size: 36px;
+            right: 2%;
+        }
+    }
+    .itemblock{
+        padding: 32px 20px;
+        p{
+            font-size: 18px;
+        }
+        .count{
+            font-size: 22px;
+        }
+    }
+    
+}
+
+@media screen and (max-width: 380px) {
+    .wrapper{
+        padding-top: 25px;
+    }
+    .top-section__image{
+        height: 210px;
+    }
+    .content{
+        &__heading{
+            font-size: 32px;
+            right: 2%;
+        }
+    }
+}
