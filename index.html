@@ -45,81 +45,15 @@
             <section class="wishes">
 
                     <div class="wishes__heading">My Wishes</div>
-                    <div class="wishes__list wishlist">
-                        <!-- <div class="wishlist__inner"> -->
-                            
-                            <div class="wishlist__item wish">
-                                <div class="wish__inner">
-                                    <div class="wish__image">
-                                        <img src="icons/shopping-bag.svg" alt="img">
-                                    </div>
-                                    <div class="wish__data">
-                                        <div class="wish__name">Name</div>
-                                        <div class="wish__category">Category</div>
-                                    </div>
-                                </div>
-                                <div class="wish__icons">
-                                    <img src="icons/checkmark_item.svg" alt="done">
-                                    <img src="icons/trash.svg" alt="delete">
-                                </div>
-                            </div>
-    
-                            <!-- <div class="wishlist__item wish">
-                                <div class="wish__inner">
-                                    <div class="wish__image">
-                                        <img src="icons/shopping-bag.svg" alt="img">
-                                    </div>
-                                    <div class="wish__data">
-                                        <div class="wish__name">Name</div>
-                                        <div class="wish__category">Category</div>
-                                    </div>
-                                </div>
-                                <div class="wish__icons">
-                                    <img src="icons/checkmark_item.svg" alt="done">
-                                    <img src="icons/trash.svg" alt="delete">
-                                </div>
-                            </div>
-    
-                            <div class="wishlist__item wish">
-                                <div class="wish__inner">
-                                    <div class="wish__image">
-                                        <img src="icons/shopping-bag.svg" alt="img">
-                                    </div>
-                                    <div class="wish__data">
-                                        <div class="wish__name">Name</div>
-                                        <div class="wish__category">Category</div>
-                                    </div>
-                                </div>
-                                <div class="wish__icons">
-                                    <img src="icons/checkmark_item.svg" alt="done">
-                                    <img src="icons/trash.svg" alt="delete">
-                                </div>
-                            </div>
-    
-                            <div class="wishlist__item wish">
-                                <div class="wish__inner">
-                                    <div class="wish__image">
-                                        <img src="icons/shopping-bag.svg" alt="img">
-                                    </div>
-                                    <div class="wish__data">
-                                        <div class="wish__name">Name</div>
-                                        <div class="wish__category">Category</div>
-                                    </div>
-                                </div>
-                                <div class="wish__icons">
-                                    <img src="icons/checkmark_item.svg" alt="done">
-                                    <img src="icons/trash.svg" alt="delete">
-                                </div>
-                            </div> -->
-                        <!-- </div> -->
-    
+                    <div id = "wishes-container" class="wishes__list wishlist">
+                      
                     </div>
             </section>
 
             <div class="modal hide">
                 <div class="modal__dialog">
                     <div class="modal__content">
-                        <form action="#">
+                        <form  action="#">
                             <div class="modal__top">
                                 <div class="modal__title">Add Wish</div>
                                 <button class="modal__close">
@@ -130,10 +64,10 @@
                                 
                                 <div class="inputs__block">
                                     <label for="name">Wish Name</label>
-                                    <input class="modal__input" type="text" name="name">
+                                    <input id ="wish-name" class="modal__input" type="text" name="name">
 
                                     <label for="desc">Wish Describtion</label>
-                                    <textarea class="modal__textarea" type="text" name="desc"></textarea>
+                                    <textarea id ="wish-desc" class="modal__textarea" type="text" name="desc"></textarea>
                                 </div>
                                 
 
@@ -148,7 +82,7 @@
                                     <input class="modal__input" type="text" name="category">
                                 </div>
 
-                                <input type="submit"  class= "submit" value="Add Wish">
+                                <input type="submit" id ="add-wish-btn"  class= "submit" value="Add Wish">
                                 <!-- <label for="image"></label>
                                 <input class="modal__input" type="file" name="image" accept=".png, .jpg, .jpeg"> -->
                             </div>

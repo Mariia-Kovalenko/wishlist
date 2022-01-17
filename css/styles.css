@@ -229,7 +229,7 @@ body {
   outline: none;
   border: 2px solid #432c26;
 }
-.modal__inputs .modal__textarea {
+.modal__inputs textarea {
   resize: none;
   height: 147px;
 }
@@ -260,7 +260,7 @@ body {
   border: 3px solid #E75A70;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 820px) {
   .wishlist {
     display: -ms-grid;
     display: grid;
