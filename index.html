@@ -47,6 +47,7 @@
                     <div class="wishes__heading">My Wishes</div>
                     <div class="wishes__list wishlist">
                         <!-- <div class="wishlist__inner"> -->
+                            
                             <div class="wishlist__item wish">
                                 <div class="wish__inner">
                                     <div class="wish__image">
@@ -113,10 +114,53 @@
                         <!-- </div> -->
     
                     </div>
-               
             </section>
-        </div>
+
+            <div class="modal hide">
+                <div class="modal__dialog">
+                    <div class="modal__content">
+                        <form action="#">
+                            <div class="modal__top">
+                                <div class="modal__title">Add Wish</div>
+                                <button class="modal__close">
+                                    <img src="icons/close.svg" alt="close">
+                                </button>
+                            </div>
+                            <div class="modal__inputs inputs">
+                                
+                                <div class="inputs__block">
+                                    <label for="name">Wish Name</label>
+                                    <input class="modal__input" type="text" name="name">
+
+                                    <label for="desc">Wish Describtion</label>
+                                    <textarea class="modal__textarea" type="text" name="desc"></textarea>
+                                </div>
+                                
+
+                                <div class="inputs__block">
+                                    <label for="categs">Choose Category</label>
+                                    <select class="modal__select" name="categs" id="categs">
+                                        <option value="Birthday">Birthday</option>
+                                        <option value="Travelling">Travelling</option>
+                                    </select>
+
+                                    <label for="category">Or Create Category</label>
+                                    <input class="modal__input" type="text" name="category">
+                                </div>
+
+                                <input type="submit"  class= "submit" value="Add Wish">
+                                <!-- <label for="image"></label>
+                                <input class="modal__input" type="file" name="image" accept=".png, .jpg, .jpeg"> -->
+                            </div>
+                           
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>        
     </div>
+
+    <script src="js/main.js"></script>
 </body>
 
 </html>

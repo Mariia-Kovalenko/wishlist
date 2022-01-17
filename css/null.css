@@ -35,6 +35,10 @@ article > * + * {
 }
 /* Наследуем шрифты для инпутов и кнопок */
 input,button,textarea,select { font: inherit;}
+input{
+  border: none;
+  
+}
 button{
     border: none;
     background-color: transparent;
