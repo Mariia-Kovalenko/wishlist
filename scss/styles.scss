@@ -32,6 +32,19 @@ body{
     display: none;
 }
 
+.completed{
+    background: #5DD240;
+    color: white;
+}
+
+.white{
+    stroke: white;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
 @media screen and (min-width: 860px) {
     .top-section{
         display: flex;
@@ -121,8 +134,7 @@ body{
 .wish{
     min-height: 90px;
     // width: 100%;
-    
-    background: #FFFFFF;
+
     box-shadow: 0px 4px 9px 3px rgba(231, 90, 112, 0.2);
     border-radius: 25px;
     padding: 20px 30px;
@@ -136,9 +148,6 @@ body{
         cursor:pointer;
     }
 
-    // &-done{
-
-    // }
 
     &__image{
         width: 56px;
@@ -169,7 +178,7 @@ body{
     }
 
     &__icons >:not(:last-child){
-        margin-right: 16px;
+        margin-right: 10px;
     }
 }
 

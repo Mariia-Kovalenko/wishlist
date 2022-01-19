@@ -25,6 +25,19 @@ body {
   display: none;
 }
 
+.completed {
+  background: #5DD240;
+  color: white;
+}
+
+.white {
+  stroke: white;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
 @media screen and (min-width: 860px) {
   .top-section {
     display: -webkit-box;
@@ -122,7 +135,6 @@ body {
 
 .wish {
   min-height: 90px;
-  background: #FFFFFF;
   -webkit-box-shadow: 0px 4px 9px 3px rgba(231, 90, 112, 0.2);
           box-shadow: 0px 4px 9px 3px rgba(231, 90, 112, 0.2);
   border-radius: 25px;
@@ -169,7 +181,7 @@ body {
   margin-right: 30px;
 }
 .wish__icons > :not(:last-child) {
-  margin-right: 16px;
+  margin-right: 10px;
 }
 
 .modal {
