@@ -149,6 +149,8 @@ button:hover {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
 }
 .wish:hover {
   cursor: pointer;

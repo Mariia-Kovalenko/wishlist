@@ -20,9 +20,17 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    const doWish = (index) => {
-        wishes[index].done = !wishes[index].done;
-    };
+    class Wish {
+        constructor(name, describtion) {
+            this.name = name;
+            this.describtion = describtion;
+            this.done = false;
+        }
+    }
+
+    // const doWish = (index) => {
+    //     wishes[index].done = !wishes[index].done;
+    // };
 
     const createWishTemplate = (wish, i) => {
         return `
@@ -78,13 +86,6 @@ window.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
     });
 
-    class Wish {
-        constructor(name, describtion) {
-            this.name = name;
-            this.describtion = describtion;
-            this.done = false;
-        }
-    }
 
     const updateLocal = () => {
         //adding array to browser local storage (making it JSON)
@@ -102,20 +103,35 @@ window.addEventListener('DOMContentLoaded', () => {
                     fillWishlist();
                     updateLocal();
 
-                    //think about avoiding reload!!!
+
                     window.location.reload();
+                    
                 });
 
             });
-            
-            // check.addEventListener('click', () => {
-            //     wishes[0].done = true;
-            //     console.log(wishes[0].done);
-            //     fillWishlist();
-            //     updateLocal();
-            // });
         }
     };
+
+    const deleteWish = () => {
+        if(wishes.length > 0){
+            const del = document.querySelectorAll('#delete-wish');
+            del.forEach((btn, index) => {
+                btn.addEventListener('click', () => {
+                    if(wishes.splice(index, 1)){
+                        console.log('deleted');
+                    }
+                    fillWishlist();
+                    updateLocal();
+
+
+                    window.location.reload();
+                    
+                });
+
+            });
+        }
+    };
+
 
 
     addWishBtn.addEventListener('click', () => {
@@ -129,8 +145,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     searchChecker();
-    
-
+    deleteWish();
 
 
 

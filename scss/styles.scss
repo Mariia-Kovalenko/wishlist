@@ -143,6 +143,8 @@ button:hover{
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    transition: all .4s;
     
     &:hover{
         cursor:pointer;
