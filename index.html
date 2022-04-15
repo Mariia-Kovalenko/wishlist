@@ -25,12 +25,12 @@
                             <div class="items__wishes itemblock">
                                 <img src="icons/heart.svg" alt="heart">
                                 <p>Wishes</p>
-                                <p class="count">9</p>
+                                <p id="wishes-count" class="count"></p>
                             </div>
                             <div class="items__done itemblock">
                                 <img src="icons/checkmark.svg" alt="heart">
                                 <p>Done</p>
-                                <p class="count">2</p>
+                                <p id="wishes-done"" class="count"></p>
                             </div>
                             <div class="items__button">
                                 <button class="add-wish">
@@ -74,12 +74,13 @@
                                 <div class="inputs__block">
                                     <label for="categs">Choose Category</label>
                                     <select class="modal__select" name="categs" id="categs">
-                                        <option value="Birthday">Birthday</option>
-                                        <option value="Travelling">Travelling</option>
+                                        <option value="no category">No category</option>
+                                        <!-- <option value="Birthday">Birthday</option>
+                                        <option value="Travelling">Travelling</option> -->
                                     </select>
 
                                     <label for="category">Or Create Category</label>
-                                    <input class="modal__input" type="text" name="category">
+                                    <input class="modal__input" type="text" name="category" id="category">
                                 </div>
 
                                 <input type="submit" id ="add-wish-btn"  class= "submit" value="Add Wish">
