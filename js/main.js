@@ -148,6 +148,7 @@ window.addEventListener('DOMContentLoaded', () => {
         category = e.target.value;
         console.log(category);
         if(category !== 'no category'){
+            newCategory.value = '';
             newCategory.disabled = true;
         } else if(category === 'no category'){
             newCategory.disabled = false;
