@@ -7,7 +7,7 @@ window.addEventListener('DOMContentLoaded', () => {
         wishName = document.getElementById('wish-name'),
         wishDesc = document.getElementById('wish-desc'),
         wishCateg = document.getElementById('categs'),
-        newCategory = document.getElementById('category'),
+        newCategory = document.querySelector('#category'),
         wishList = document.getElementById('wishes-container'),
         wishesCount = document.getElementById('wishes-count'),
         wishesDone = document.getElementById('wishes-done');
@@ -33,17 +33,6 @@ window.addEventListener('DOMContentLoaded', () => {
             this.done = false;
         }
     }
-
-    const wishCategories = ['Birthday', 'Travelling'];
-
-    function generateCategoriesSelect(categs){
-        for(let i = 0; i < wishCategories.length; i++){
-            wishCateg. innerHTML += `
-            <option value="${wishCategories[i]}">${wishCategories[i]}</option>
-            `;
-        }
-    }
-
 
     function createWishTemplate(wish, i){
         return `
@@ -144,12 +133,18 @@ window.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('wishes', JSON.stringify(wishes));
     }
 
-    // if(newCategory.disabled == false && category === 'no category'){
 
-    //     console.log(`new categ: ${category}`);
-    // }
+    const wishCategories = ['Birthday', 'Travelling'];
 
-    wishCateg.addEventListener('click', (e) => {
+    function generateCategoriesSelect(categs){
+        for(let i = 0; i < wishCategories.length; i++){
+            wishCateg. innerHTML += `
+            <option value="${wishCategories[i]}">${wishCategories[i]}</option>
+            `;
+        }
+    }
+
+    wishCateg.addEventListener('change', (e) => {
         category = e.target.value;
         console.log(category);
         if(category !== 'no category'){
@@ -158,6 +153,14 @@ window.addEventListener('DOMContentLoaded', () => {
             newCategory.disabled = false;
         }
     });
+
+    // get new category from input
+    if(newCategory.disabled == false && category === 'no category'){
+        newCategory.addEventListener('input', (e) => {
+            category = e.target.value;
+            if(wishCategories.length < 10) wishCategories.push(category);
+        });
+    } 
 
     addWishBtn.addEventListener('click', () => {
         wishes.push(new Wish(wishName.value, wishDesc.value, category));
