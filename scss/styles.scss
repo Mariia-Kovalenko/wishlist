@@ -359,6 +359,10 @@ button:hover{
         width: 100%;
         margin: 0 0 16px 0;
     }
+    .modal__inputs input,
+    .inputs__block{
+        flex: 1 1 100%;
+    }
 }
 @media screen and (max-width: 650px) {
     .wrapper{

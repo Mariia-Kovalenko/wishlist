@@ -3,10 +3,16 @@
 window.addEventListener('DOMContentLoaded', () => {
     
     // adding wish
-    const addWishBtn = document.getElementById('add-wish-btn');
-    const wishName = document.getElementById('wish-name');
-    const wishList = document.getElementById('wishes-container');
+    const addWishBtn = document.getElementById('add-wish-btn'),
+        wishName = document.getElementById('wish-name'),
+        wishDesc = document.getElementById('wish-desc'),
+        wishCateg = document.getElementById('categs'),
+        newCategory = document.querySelector('#category'),
+        wishList = document.getElementById('wishes-container'),
+        wishesCount = document.getElementById('wishes-count'),
+        wishesDone = document.getElementById('wishes-done');
 
+    let category = wishCateg.value;
 
     let wishes;
 
@@ -19,20 +25,16 @@ window.addEventListener('DOMContentLoaded', () => {
         wishes = JSON.parse(localStorage.getItem('wishes'));
     }
 
-
     class Wish {
-        constructor(name, describtion) {
+        constructor(name, describtion, category) {
             this.name = name;
             this.describtion = describtion;
+            this.category = category;
             this.done = false;
         }
     }
 
-    // const doWish = (index) => {
-    //     wishes[index].done = !wishes[index].done;
-    // };
-
-    const createWishTemplate = (wish, i) => {
+    function createWishTemplate(wish, i){
         return `
         <div id = "wish-item" class="wishlist__item wish ${wish.done ? 'completed' : ''}">
         <div class="wish__inner">
@@ -41,7 +43,7 @@ window.addEventListener('DOMContentLoaded', () => {
             </div>
             <div class="wish__data">
                 <div class="wish__name">${wish.name}</div>
-                <div class="wish__category">Category</div>
+                <div class="wish__category">${wish.category}</div>
             </div>
         </div>
         <div class="wish__icons">
@@ -62,23 +64,63 @@ window.addEventListener('DOMContentLoaded', () => {
             </clipPath>
             </defs>
             </svg>
-
             </button>
         </div>
         </div>
         `;
-    };
+    }
 
+    function searchChecker() {
+        if(wishes.length > 0){
+            const check = document.querySelectorAll('#done-wish');
+            check.forEach((btn, index) => {
+                btn.addEventListener('click', () => {
+                    wishes[index].done = !wishes[index].done;
+                    // console.log(wishes[index].done);
+                    fillWishlist();
+                    updateLocal();
 
-    const fillWishlist = () => {
+                    window.location.reload();
+                    
+                });
+            });
+        }
+    }
+
+    function deleteWish() {
+        if(wishes.length > 0){
+            const del = document.querySelectorAll('#delete-wish');
+            del.forEach((btn, index) => {
+                btn.addEventListener('click', () => {
+                    if(wishes.splice(index, 1)){
+                        // console.log('deleted');
+                    }
+                    fillWishlist();
+                    updateLocal();
+
+                    window.location.reload();
+                    
+                });
+
+            });
+        }
+    }
+
+    function fillWishlist(){
         wishList.innerHTML = "";
+        let wishesDoneCount = 0;
         if(wishes.length > 0){
             wishes.forEach((element, i) => {
                 wishList.innerHTML +=  createWishTemplate(element, i);
-                console.log('added wish');
+                // console.log('added wish');
+                if(element.done){
+                    wishesDoneCount++;
+                }
             });
         }
-    };
+        wishesCount.innerHTML = wishes.length;
+        wishesDone.innerHTML = wishesDoneCount;
+    }
 
     fillWishlist();
 
@@ -86,60 +128,58 @@ window.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
     });
 
-
-    const updateLocal = () => {
+    function updateLocal() {
         //adding array to browser local storage (making it JSON)
         localStorage.setItem('wishes', JSON.stringify(wishes));
-    };
+        localStorage.setItem('wishCategories', JSON.stringify(wishCategories));
+    }
 
 
-    const searchChecker = () => {
-        if(wishes.length > 0){
-            const check = document.querySelectorAll('#done-wish');
-            check.forEach((btn, index) => {
-                btn.addEventListener('click', () => {
-                    wishes[index].done = !wishes[index].done;
-                    console.log(wishes[index].done);
-                    fillWishlist();
-                    updateLocal();
+    let wishCategories;
+
+    if(!localStorage.wishCategories){
+        wishCategories = ['Birthday', 'Travelling'];
+    }else{
+        wishCategories = JSON.parse(localStorage.getItem('wishCategories'));
+    }
 
 
-                    window.location.reload();
-                    
-                });
-
-            });
+    function generateCategoriesSelect(categs){
+        for(let i = 0; i < wishCategories.length; i++){
+            wishCateg. innerHTML += `
+            <option value="${wishCategories[i]}">${wishCategories[i]}</option>
+            `;
         }
-    };
+    }
 
-    const deleteWish = () => {
-        if(wishes.length > 0){
-            const del = document.querySelectorAll('#delete-wish');
-            del.forEach((btn, index) => {
-                btn.addEventListener('click', () => {
-                    if(wishes.splice(index, 1)){
-                        console.log('deleted');
-                    }
-                    fillWishlist();
-                    updateLocal();
-
-
-                    window.location.reload();
-                    
-                });
-
-            });
+    wishCateg.addEventListener('change', (e) => {
+        category = e.target.value;
+        console.log(category);
+        if(category !== 'no category'){
+            newCategory.value = '';
+            newCategory.disabled = true;
+        } else if(category === 'no category'){
+            newCategory.disabled = false;
         }
-    };
+    });
 
-
+    // get new category from input
+    if(newCategory.disabled == false && category === 'no category'){
+        newCategory.addEventListener('change', (e) => {
+            category = e.target.value;
+            console.log(category);
+            wishCategories.push(category);
+            console.log(wishCategories);
+        });
+    } 
 
     addWishBtn.addEventListener('click', () => {
-        wishes.push(new Wish(wishName.value));
+        wishes.push(new Wish(wishName.value, wishDesc.value, category));
         updateLocal();
         fillWishlist();
         wishName.value = "";
-        //костыль!
+        wishDesc.value = '';
+        
         window.location.reload();
         // console.log(wishes);
     });
@@ -148,7 +188,7 @@ window.addEventListener('DOMContentLoaded', () => {
     deleteWish();
 
 
-
+// --------------------------------------------------
     //Modal window - add wish form
     const addWish = document.querySelector('.add-wish'),
         modal = document.querySelector('.modal'),
@@ -166,7 +206,11 @@ window.addEventListener('DOMContentLoaded', () => {
             document.body.style.overflow = "";
         }
 
-        addWish.addEventListener('click', openModal);
+
+        addWish.addEventListener('click', () => {
+            generateCategoriesSelect(wishCategories); 
+            openModal();
+        });
         modalClose.addEventListener('click', closeModal);
         //modal.addEventListener('click', closeModal);
 
