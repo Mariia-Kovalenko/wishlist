@@ -131,10 +131,18 @@ window.addEventListener('DOMContentLoaded', () => {
     function updateLocal() {
         //adding array to browser local storage (making it JSON)
         localStorage.setItem('wishes', JSON.stringify(wishes));
+        localStorage.setItem('wishCategories', JSON.stringify(wishCategories));
     }
 
 
-    const wishCategories = ['Birthday', 'Travelling'];
+    let wishCategories;
+
+    if(!localStorage.wishCategories){
+        wishCategories = ['Birthday', 'Travelling'];
+    }else{
+        wishCategories = JSON.parse(localStorage.getItem('wishCategories'));
+    }
+
 
     function generateCategoriesSelect(categs){
         for(let i = 0; i < wishCategories.length; i++){
@@ -157,9 +165,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // get new category from input
     if(newCategory.disabled == false && category === 'no category'){
-        newCategory.addEventListener('input', (e) => {
+        newCategory.addEventListener('change', (e) => {
             category = e.target.value;
-            if(wishCategories.length < 10) wishCategories.push(category);
+            console.log(category);
+            wishCategories.push(category);
+            console.log(wishCategories);
         });
     } 
 
